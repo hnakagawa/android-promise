@@ -1,0 +1,74 @@
+package com.anprosit.android.promise;
+
+import com.anprosit.android.promise.internal.PromiseContext;
+
+/**
+ * Created by Hirofumi Nakagawa on 13/07/12.
+ */
+public abstract class Task<T, V, E> {
+    private PromiseContext mContext;
+
+    public abstract void run(T value);
+
+    public void onFailed(E value, Exception exception) {
+    }
+
+    public void execute(T value, PromiseContext context) {
+        if (context.getState() != PromiseContext.State.DOING)
+            return;
+
+        setContext(context);
+        try {
+            run(value);
+        } catch (Exception exp) {
+            fail(null, exp);
+        }
+    }
+
+    protected synchronized final void next(V value) {
+        try {
+            PromiseContext context = getContext();
+            if (context == null)
+                throw new IllegalStateException(); //TODO message
+
+            Task<V, ?, ?> next = (Task<V, ?, ?>) context.getNextTask();
+            if (next != null)
+                next.execute(value, context);
+            else
+                context.done(value);
+        } finally {
+            setContext(null);
+        }
+    }
+
+    protected void fail(E value) {
+        fail(value, null);
+    }
+
+    protected synchronized void fail(E value, Exception exception) {
+        try {
+            callOnFailed(value, exception);
+        } finally {
+            setContext(null);
+        }
+    }
+
+    private void callOnFailed(E value, Exception exception) {
+        try {
+            onFailed(value, exception);
+        } finally {
+            PromiseContext context = getContext();
+            if (context != null)
+                context.fail(value, exception);
+            //else{} recovered by onFailed handler
+        }
+    }
+
+    protected synchronized PromiseContext getContext() {
+        return mContext;
+    }
+
+    protected synchronized void setContext(PromiseContext context) {
+        mContext = context;
+    }
+}
