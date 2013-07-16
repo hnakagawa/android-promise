@@ -99,8 +99,7 @@ public class PromiseImpl extends Promise implements PromiseContext {
     public synchronized Collection<Task<?, ?, ?>> anatomy() {
         if (mState != State.READY)
             throw new IllegalStateException("Promise#anatomy method must be called in READY state");
-        mState = State.DESTROYED;
-        mLatch.countDown();
+        destroy();
         return mTasks;
     }
 
@@ -119,7 +118,7 @@ public class PromiseImpl extends Promise implements PromiseContext {
             @Override
             public void run() {
                 try {
-                    if (callback != null)
+                    if (getState() == State.DONE && callback != null)
                         callback.onCompleted(result);
                 } finally {
                     mLatch.countDown();
@@ -140,7 +139,7 @@ public class PromiseImpl extends Promise implements PromiseContext {
 
     @Override
     public synchronized void cancel() {
-        if (mState != State.DOING)
+        if (mState != State.DOING && mState != State.READY)
             return;
         mState = State.CANCELLED;
         mLatch.countDown();
@@ -149,6 +148,12 @@ public class PromiseImpl extends Promise implements PromiseContext {
     @Override
     public synchronized boolean isCancelled() {
         return mState == State.CANCELLED;
+    }
+
+    @Override
+    public synchronized void destroy() {
+        mState = State.DESTROYED;
+        mLatch.countDown();
     }
 
     @Override
@@ -175,7 +180,7 @@ public class PromiseImpl extends Promise implements PromiseContext {
             @Override
             public void run() {
                 try {
-                    if (callback != null)
+                    if (getState() == State.FAILED && callback != null)
                         callback.onFailed(result, exception);
                 } finally {
                     mLatch.countDown();

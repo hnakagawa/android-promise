@@ -40,6 +40,8 @@ public abstract class Promise {
 
     public abstract void cancel();
 
+    public abstract void destroy();
+
     public abstract boolean isCancelled();
 
     public abstract void await();
@@ -64,6 +66,6 @@ public abstract class Promise {
             return;
 
         for (Promise promise : list)
-            promise.cancel();
+            promise.destroy();
     }
 }
