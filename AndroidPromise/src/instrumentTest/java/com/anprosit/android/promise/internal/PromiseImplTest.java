@@ -11,12 +11,12 @@ import java.util.Collection;
  * Created by Hirofumi Nakagawa on 13/07/15.
  */
 public class PromiseImplTest extends AndroidTestCase {
-    private PromiseImpl mPromise;
+    private PromiseImpl<String, String, String> mPromise;
 
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        mPromise = (PromiseImpl) Promise.newInstance(getContext());
+        mPromise = (PromiseImpl<String, String, String>) Promise.newInstance(getContext(), String.class);
     }
 
     @Override

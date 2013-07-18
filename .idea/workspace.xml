@@ -12,8 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f95c05f0-4300-4316-bbee-199b8a63abfe" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java" afterPath="$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java" afterPath="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java" afterPath="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java" afterPath="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidPromise.iws" />
@@ -82,78 +84,120 @@
     <favorites_list name="AndroidPromise" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="FailedCallback.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/FailedCallback.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="210">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Promise.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="30" selection-start="1996" selection-end="1996" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1005">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PromiseImpl.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="25" selection-start="4045" selection-end="4045" vertical-scroll-proportion="0.3592535" vertical-offset="2154" max-vertical-offset="3255">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#581#596#0" expanded="true" />
-                <element signature="e#3021#3347#0" expanded="true" />
-                <element signature="e#3336#3337#0" expanded="true" />
-                <element signature="e#4547#4883#0" expanded="true" />
-                <element signature="e#4872#4873#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AsyncThreadTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/AsyncThreadTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="18" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="1080">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DelayTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/DelayTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="2" selection-start="2" selection-end="2" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HandlerThreadTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/HandlerThreadTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="18" selection-start="1018" selection-end="1018" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="765">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PromiseContext.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseContext.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="8" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="495">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="FailedCallback.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/FailedCallback.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="8" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="210">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Promise.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="67" column="29" selection-start="2204" selection-end="2204" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1005">
+                  <folding>
+                    <element signature="e#494#527#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PromiseImpl.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="45" column="39" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.9496753" vertical-offset="90" max-vertical-offset="3165">
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#599#614#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AsyncThreadTask.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/AsyncThreadTask.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="60" column="18" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="1245">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DelayTask.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/DelayTask.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="2" selection-start="2" selection-end="2" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HandlerThreadTask.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/HandlerThreadTask.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="33" column="18" selection-start="1018" selection-end="1018" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="840">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PromiseContext.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseContext.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="19" column="8" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="495">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="Promise.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="48" column="52" selection-start="1502" selection-end="1502" vertical-scroll-proportion="0.0" vertical-offset="365" max-vertical-offset="1005">
+                  <folding>
+                    <element signature="e#494#527#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="25" column="90" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0" vertical-offset="74" max-vertical-offset="1500">
+                  <folding>
+                    <element signature="e#863#1290#0" expanded="true" />
+                    <element signature="e#1243#1244#0" expanded="true" />
+                    <element signature="e#2638#2904#0" expanded="true" />
+                    <element signature="e#2893#2894#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PromiseImplTest.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="37" column="0" selection-start="985" selection-end="985" vertical-scroll-proportion="0.8538961" vertical-offset="29" max-vertical-offset="2100">
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -247,10 +291,10 @@
         <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Task.java" />
         <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/CompletedCallback.java" />
         <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/ResultCallback.java" />
-        <option value="$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java" />
         <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java" />
         <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java" />
+        <option value="$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java" />
       </list>
     </option>
   </component>
@@ -363,6 +407,228 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromiseExample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromiseExample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromiseExample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromiseExample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="instrumentTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidPromise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="instrumentTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="internal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -403,7 +669,7 @@
       <recent name="com.anprosit.android.promise.internal" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Application.AndroidPromiseExample">
+  <component name="RunManager" selected="Android Tests.AndroidPromise">
     <configuration default="false" name="AndroidPromise" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true">
       <module name="AndroidPromise" />
       <option name="TESTING_TYPE" value="0" />
@@ -663,15 +929,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="2" width="1920" height="1055" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.6714443" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26130098" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2767365" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -682,12 +947,13 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919957" sideWeight="0.738699" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19743863" sideWeight="0.738699" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.738699" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26130098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19743863" sideWeight="0.7232635" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26072606" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.738699" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.6714443" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39955604" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
@@ -753,24 +1019,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="13" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1695">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#825#1252#0" expanded="true" />
-            <element signature="e#988#1183#0" expanded="true" />
-            <element signature="e#1164#1165#0" expanded="true" />
-            <element signature="e#1278#1487#0" expanded="true" />
-            <element signature="e#1476#1477#0" expanded="true" />
-            <element signature="e#2538#2804#0" expanded="true" />
-            <element signature="e#2793#2794#0" expanded="true" />
-            <element signature="e#3288#3424#0" expanded="true" />
-            <element signature="e#3413#3414#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="28" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
@@ -780,30 +1028,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/DelayTaskTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <folding />
-        </state>
+        <state line="7" column="13" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="21" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="5" column="21" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-          <folding />
-        </state>
+        <state line="1" column="0" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/TaskTest.java">
@@ -820,25 +1060,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="19" selection-start="2740" selection-end="2740" vertical-scroll-proportion="-0.09076175" vertical-offset="1436" max-vertical-offset="2100">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/FailedCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="30" selection-start="1996" selection-end="1996" vertical-scroll-proportion="0.0" vertical-offset="257" max-vertical-offset="1005">
           <folding />
         </state>
       </provider>
@@ -871,16 +1095,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="90" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0" vertical-offset="74" max-vertical-offset="1500">
+          <folding>
+            <element signature="e#863#1290#0" expanded="true" />
+            <element signature="e#1243#1244#0" expanded="true" />
+            <element signature="e#2638#2904#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="25" selection-start="4045" selection-end="4045" vertical-scroll-proportion="0.3592535" vertical-offset="2154" max-vertical-offset="3255">
+        <state line="45" column="39" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.9496753" vertical-offset="90" max-vertical-offset="3165">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#581#596#0" expanded="true" />
-            <element signature="e#3021#3347#0" expanded="true" />
-            <element signature="e#3336#3337#0" expanded="true" />
-            <element signature="e#4547#4883#0" expanded="true" />
-            <element signature="e#4872#4873#0" expanded="true" />
+            <element signature="e#599#614#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="52" selection-start="1502" selection-end="1502" vertical-scroll-proportion="0.0" vertical-offset="365" max-vertical-offset="1005">
+          <folding>
+            <element signature="e#494#527#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="985" selection-end="985" vertical-scroll-proportion="0.8538961" vertical-offset="29" max-vertical-offset="2100">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

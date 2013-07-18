@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
 
         mHandler = new Handler();
 
-        Promise promise = Promise.newInstance(this);
+        Promise<String, String, String> promise = Promise.newInstance(this, String.class);
         promise.thenOnMainThread(new Task<String, String, String>() {
             @Override
             public void run(String value) {
@@ -67,8 +67,8 @@ public class MainActivity extends Activity {
         });
     }
 
-    private Promise createPromise() {
-        Promise promise = Promise.newInstance(this);
+    private Promise<String, String, String> createPromise() {
+        Promise<String, String, String> promise = Promise.newInstance(this, String.class);
         promise.thenOnMainThread(new Task<String, String, String>() {
             @Override
             public void run(String value) {

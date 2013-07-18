@@ -15,7 +15,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * Created by Hirofumi Nakagawa on 13/07/12.
  */
-public class PromiseImpl extends Promise implements PromiseContext {
+public class PromiseImpl<I, O, E> extends Promise<I, O, E> implements PromiseContext {
     private List<Task<?, ?, ?>> mTasks = new ArrayList<Task<?, ?, ?>>();
 
     private final Handler mHandler;
@@ -33,51 +33,51 @@ public class PromiseImpl extends Promise implements PromiseContext {
     }
 
     @Override
-    public Promise then(Task<?, ?, ?> task) {
+    public <NO, NE> Promise<I, NO, NE> then(Task<O, NO, NE> task) {
         synchronized (this) {
             addTask(task);
         }
-        return this;
+        return (Promise<I, NO, NE>)this;
     }
 
     @Override
-    public Promise then(Promise promise) {
+    public <NO, NE> Promise<I, NO, NE> then(Promise<O, NO, NE> promise) {
         synchronized (this) {
             addTasks(promise.anatomy());
         }
-        return this;
+        return (Promise<I, NO, NE>)this;
     }
 
     @Override
-    public Promise thenOnMainThread(Task<?, ?, ?> task) {
+    public <NO, NE> Promise<I, NO, NE> thenOnMainThread(Task<O, NO, NE> task) {
         return thenOnMainThread(task, 0);
     }
 
     @Override
-    public Promise thenOnMainThread(Task<?, ?, ?> task, long delay) {
+    public <NO, NE> Promise<I, NO, NE> thenOnMainThread(Task<O, NO, NE> task, long delay) {
         synchronized (this) {
             addTask(new HandlerThreadTask(delay));
             addTask(task);
         }
-        return this;
+        return (Promise<I, NO, NE>)this;
     }
 
     @Override
-    public Promise thenOnAsyncThread(Task<?, ?, ?> task) {
+    public <NO, NE> Promise<I, NO, NE> thenOnAsyncThread(Task<O, NO, NE> task) {
         return thenOnAsyncThread(task, 0);
     }
 
     @Override
-    public Promise thenOnAsyncThread(Task<?, ?, ?> task, long delay) {
+    public <NO, NE> Promise<I, NO, NE> thenOnAsyncThread(Task<O, NO, NE> task, long delay) {
         synchronized (this) {
             addTask(new AsyncThreadTask(delay));
             addTask(task);
         }
-        return this;
+        return (Promise<I, NO, NE>)this;
     }
 
     @Override
-    public synchronized void execute(Object value, ResultCallback<?, ?> resultCallback) {
+    public synchronized void execute(I value, ResultCallback<O, E> resultCallback) {
         if (getState() != State.READY)
             throw new IllegalStateException("Promise#execute method must be called in READY state");
 
