@@ -25,3 +25,7 @@ android {
         targetSdkVersion 16
     }
 }
+
+tasks.withType(Compile) {
+    options.encoding = 'UTF-8'
+}
