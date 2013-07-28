@@ -8,22 +8,24 @@ import com.anprosit.android.promise.Task;
  * Created by Hirofumi Nakagawa on 13/07/14.
  */
 public interface PromiseContext {
-    public State getState();
+	public State getState();
 
-    public void cancel();
+	public void cancel();
 
-    public void done(Object result);
+	public void done(Object result);
 
-    public void fail(Bundle result, Exception exception);
+	public void fail(Bundle result, Exception exception);
 
-    public Task<?, ?> getNextTask();
+	public void yield(int code, Bundle value);
 
-    public enum State {
-        READY,
-        DOING,
-        DONE,
-        CANCELLED,
-        FAILED,
-        DESTROYED,
-    }
+	public Task<?, ?> getNextTask();
+
+	public enum State {
+		READY,
+		DOING,
+		DONE,
+		CANCELLED,
+		FAILED,
+		DESTROYED,
+	}
 }

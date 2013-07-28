@@ -38,7 +38,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${repos.absolutePath}"
-            pom.version = '0.0.2'
+            pom.version = '0.0.3'
             pom.groupId = 'com.anprosit'
             pom.artifactId = 'android-promise'
         }

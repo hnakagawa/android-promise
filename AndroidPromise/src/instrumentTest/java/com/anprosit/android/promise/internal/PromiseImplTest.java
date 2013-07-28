@@ -12,124 +12,130 @@ import java.util.Collection;
  * Created by Hirofumi Nakagawa on 13/07/15.
  */
 public class PromiseImplTest extends AndroidTestCase {
-    private PromiseImpl<String, String> mPromise;
+	private PromiseImpl<String, String> mPromise;
 
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-        mPromise = (PromiseImpl<String, String>) Promise.newInstance(getContext(), String.class);
-    }
+	@Override
+	public void setUp() throws Exception {
+		super.setUp();
+		mPromise = (PromiseImpl<String, String>) Promise.newInstance(getContext(), String.class);
+	}
 
-    @Override
-    public void tearDown() throws Exception {
-        Promise.destroy(getContext());
-        super.tearDown();
-    }
+	@Override
+	public void tearDown() throws Exception {
+		Promise.destroy(getContext());
+		super.tearDown();
+	}
 
-    public void testThenWithTask() {
-        mPromise.then(new Task<String, String>() {
-            @Override
-            public void run(String value) {
-            }
+	public void testThenWithTask() {
+		mPromise.then(new Task<String, String>() {
+			@Override
+			public void run(String value) {
+			}
 
-            @Override
-            public void onFailed(Bundle value, Exception exp) {
-            }
-        });
+			@Override
+			public void onFailed(Bundle value, Exception exp) {
+			}
+		});
 
-        Collection<Task<?, ?>> tasks = mPromise.anatomy();
-        assertEquals(1, tasks.size());
-        assertEquals(PromiseContext.State.DESTROYED, mPromise.getState());
-    }
+		Collection<Task<?, ?>> tasks = mPromise.anatomy();
+		assertEquals(1, tasks.size());
+		assertEquals(PromiseContext.State.DESTROYED, mPromise.getState());
+	}
 
-    public void testThenOnMainThread() {
-        mPromise.thenOnMainThread(new Task<String, String>() {
-            @Override
-            public void run(String value) {
-            }
+	public void testThenOnMainThread() {
+		mPromise.thenOnMainThread(new Task<String, String>() {
+			@Override
+			public void run(String value) {
+			}
 
-            @Override
-            public void onFailed(Bundle value, Exception exp) {
-            }
-        });
+			@Override
+			public void onFailed(Bundle value, Exception exp) {
+			}
+		});
 
-        Collection<Task<?, ?>> tasks = mPromise.anatomy();
-        assertEquals(2, tasks.size());
-        assertEquals(PromiseContext.State.DESTROYED, mPromise.getState());
-    }
+		Collection<Task<?, ?>> tasks = mPromise.anatomy();
+		assertEquals(2, tasks.size());
+		assertEquals(PromiseContext.State.DESTROYED, mPromise.getState());
+	}
 
-    public void testThenOnAsyncThread() {
-        mPromise.thenOnAsyncThread(new Task<String, String>() {
-            @Override
-            public void run(String value) {
-            }
+	public void testThenOnAsyncThread() {
+		mPromise.thenOnAsyncThread(new Task<String, String>() {
+			@Override
+			public void run(String value) {
+			}
 
-            @Override
-            public void onFailed(Bundle value, Exception exp) {
-            }
-        });
+			@Override
+			public void onFailed(Bundle value, Exception exp) {
+			}
+		});
 
-        Collection<Task<?, ?>> tasks = mPromise.anatomy();
-        assertEquals(2, tasks.size());
-        assertEquals(PromiseContext.State.DESTROYED, mPromise.getState());
-    }
+		Collection<Task<?, ?>> tasks = mPromise.anatomy();
+		assertEquals(2, tasks.size());
+		assertEquals(PromiseContext.State.DESTROYED, mPromise.getState());
+	}
 
-    public void testIsCompleted() {
-        assertFalse(mPromise.isCompleted());
-        mPromise.mState = PromiseContext.State.DOING;
-        mPromise.done(null);
-        assertTrue(mPromise.isCompleted());
-    }
+	public void testIsCompleted() {
+		assertFalse(mPromise.isCompleted());
+		mPromise.mState = PromiseContext.State.DOING;
+		mPromise.done(null);
+		assertTrue(mPromise.isCompleted());
+	}
 
-    public void testCancel() {
-        assertEquals(PromiseContext.State.READY, mPromise.getState());
-        mPromise.mState = PromiseContext.State.DOING;
-        mPromise.cancel();
-        assertEquals(PromiseContext.State.CANCELLED, mPromise.getState());
-    }
+	public void testCancel() {
+		assertEquals(PromiseContext.State.READY, mPromise.getState());
+		mPromise.mState = PromiseContext.State.DOING;
+		mPromise.cancel();
+		assertEquals(PromiseContext.State.CANCELLED, mPromise.getState());
+	}
 
-    public void testFail() {
-        assertEquals(PromiseContext.State.READY, mPromise.getState());
-        mPromise.mState = PromiseContext.State.DOING;
-        mPromise.fail(null, new Exception());
-        assertEquals(PromiseContext.State.FAILED, mPromise.getState());
-    }
+	public void testFail() {
+		assertEquals(PromiseContext.State.READY, mPromise.getState());
+		mPromise.mState = PromiseContext.State.DOING;
+		mPromise.fail(null, new Exception());
+		assertEquals(PromiseContext.State.FAILED, mPromise.getState());
+	}
 
-    public void testGetNextTask() {
-        mPromise.then(new Task<String, String>() {
-            @Override
-            public void run(String value) {
-            }
+	public void testYield() {
+		assertEquals(PromiseContext.State.READY, mPromise.getState());
+		mPromise.mState = PromiseContext.State.DOING;
+		mPromise.yield(1, new Bundle());
+	}
 
-            @Override
-            public void onFailed(Bundle value, Exception exp) {
-            }
-        });
+	public void testGetNextTask() {
+		mPromise.then(new Task<String, String>() {
+			@Override
+			public void run(String value) {
+			}
 
-        assertNotNull(mPromise.getNextTask());
-        assertNull(mPromise.getNextTask());
-    }
+			@Override
+			public void onFailed(Bundle value, Exception exp) {
+			}
+		});
 
-    public void testExecute() {
-        mPromise.then(new Task<String, String>() {
-            @Override
-            public void run(String value) {
-                next(value);
-            }
+		assertNotNull(mPromise.getNextTask());
+		assertNull(mPromise.getNextTask());
+	}
 
-            @Override
-            public void onFailed(Bundle value, Exception exp) {
-            }
-        });
+	public void testExecute() {
+		mPromise.then(new Task<String, String>() {
+			@Override
+			public void run(String value) {
+				next(value);
+			}
 
-        assertEquals(PromiseContext.State.READY, mPromise.getState());
-        mPromise.execute("aaa", null);
-        assertEquals(PromiseContext.State.DONE, mPromise.getState());
-    }
+			@Override
+			public void onFailed(Bundle value, Exception exp) {
+			}
+		});
 
-    public void testExecuteWithEmptyTask() {
-        assertEquals(PromiseContext.State.READY, mPromise.getState());
-        mPromise.execute("aaa", null);
-        assertEquals(PromiseContext.State.DONE, mPromise.getState());
-    }
+		assertEquals(PromiseContext.State.READY, mPromise.getState());
+		mPromise.execute("aaa", null);
+		assertEquals(PromiseContext.State.DONE, mPromise.getState());
+	}
+
+	public void testExecuteWithEmptyTask() {
+		assertEquals(PromiseContext.State.READY, mPromise.getState());
+		mPromise.execute("aaa", null);
+		assertEquals(PromiseContext.State.DONE, mPromise.getState());
+	}
 }

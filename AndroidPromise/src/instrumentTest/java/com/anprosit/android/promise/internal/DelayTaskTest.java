@@ -8,17 +8,17 @@ import android.test.AndroidTestCase;
  */
 public class DelayTaskTest extends AndroidTestCase {
 
-    public void testDelayTask() {
-        DelayTask<?, ?> task = new DelayTask<Object, Object>(100) {
-            @Override
-            public void run(Object value) {
-            }
+	public void testDelayTask() {
+		DelayTask<?, ?> task = new DelayTask<Object, Object>(100) {
+			@Override
+			public void run(Object value) {
+			}
 
-            @Override
-            public void onFailed(Bundle value, Exception exp) {
-            }
-        };
+			@Override
+			public void onFailed(Bundle value, Exception exp) {
+			}
+		};
 
-        assertEquals(100, task.getDelay());
-    }
+		assertEquals(100, task.getDelay());
+	}
 }
