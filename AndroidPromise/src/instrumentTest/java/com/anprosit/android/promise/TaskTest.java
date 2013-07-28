@@ -1,5 +1,6 @@
 package com.anprosit.android.promise;
 
+import android.os.Bundle;
 import android.test.AndroidTestCase;
 
 import com.anprosit.android.promise.test.MockPromiseContext;
@@ -27,7 +28,7 @@ public class TaskTest extends AndroidTestCase {
     }
 
     public void testExecute() {
-        Task<String, String, String> task = new Task<String, String, String>() {
+        Task<String, String> task = new Task<String, String>() {
             @Override
             public void run(String value) {
                 assertEquals("aaa", value);
@@ -35,7 +36,7 @@ public class TaskTest extends AndroidTestCase {
             }
 
             @Override
-            public void onFailed(String value, Exception exp) {
+            public void onFailed(Bundle value, Exception exp) {
             }
         };
 
@@ -54,14 +55,15 @@ public class TaskTest extends AndroidTestCase {
     }
 
     public void testExecuteWithFail() {
-        Task<String, String, String> task = new Task<String, String, String>() {
+	    final Bundle bundle = new Bundle();
+        Task<String, String> task = new Task<String, String>() {
             @Override
             public void run(String value) {
-                fail("bbb");
+                fail(bundle);
             }
 
             @Override
-            public void onFailed(String value, Exception exp) {
+            public void onFailed(Bundle value, Exception exp) {
                 mIsFailed = true;
                 mValue = value;
             }
@@ -80,19 +82,19 @@ public class TaskTest extends AndroidTestCase {
         });
 
         assertTrue(mIsFailed);
-        assertEquals("bbb", mValue);
+        assertEquals(bundle, mValue);
     }
 
     public void testExecuteWithException() {
         final RuntimeException exp = new RuntimeException();
-        Task<String, String, String> task = new Task<String, String, String>() {
+        Task<String, String> task = new Task<String, String>() {
             @Override
             public void run(String value) {
                 throw exp;
             }
 
             @Override
-            public void onFailed(String value, Exception exp) {
+            public void onFailed(Bundle value, Exception exp) {
                 mValue = exp;
             }
         };
@@ -104,7 +106,7 @@ public class TaskTest extends AndroidTestCase {
             }
 
             @Override
-            public void fail(Object value, Exception exp) {
+            public void fail(Bundle value, Exception exp) {
                 mIsFailed = true;
             }
         });
@@ -114,14 +116,14 @@ public class TaskTest extends AndroidTestCase {
     }
 
     public void testExecuteWithIllegalState() {
-        Task<String, String, String> task = new Task<String, String, String>() {
+        Task<String, String> task = new Task<String, String>() {
             @Override
             public void run(String value) {
                 next(value);
             }
 
             @Override
-            public void onFailed(String value, Exception exp) {
+            public void onFailed(Bundle value, Exception exp) {
             }
         };
 
@@ -140,13 +142,13 @@ public class TaskTest extends AndroidTestCase {
     }
 
     public void testNext() {
-        Task<String, String, String> task = new Task<String, String, String>() {
+        Task<String, String> task = new Task<String, String>() {
             @Override
             public void run(String value) {
             }
 
             @Override
-            public void onFailed(String value, Exception exp) {
+            public void onFailed(Bundle value, Exception exp) {
             }
         };
 
@@ -157,18 +159,18 @@ public class TaskTest extends AndroidTestCase {
             }
 
             @Override
-            public Task<?, ?, ?> getNextTask() {
+            public Task<?, ?> getNextTask() {
                 if (mSeq != 0)
                     return null;
                 mSeq++;
-                return new Task<Object, Object, Object>() {
+                return new Task<Object, Object>() {
                     @Override
                     public void run(Object value) {
                         mValue = (String) value;
                     }
 
                     @Override
-                    public void onFailed(Object value, Exception exp) {
+                    public void onFailed(Bundle value, Exception exp) {
                     }
                 };
             }
@@ -179,13 +181,13 @@ public class TaskTest extends AndroidTestCase {
     }
 
     public void testFail() {
-        Task<String, String, String> task = new Task<String, String, String>() {
+        Task<String, String> task = new Task<String, String>() {
             @Override
             public void run(String value) {
             }
 
             @Override
-            public void onFailed(String value, Exception exp) {
+            public void onFailed(Bundle value, Exception exp) {
             }
         };
 
@@ -196,12 +198,13 @@ public class TaskTest extends AndroidTestCase {
             }
 
             @Override
-            public void fail(Object value, Exception exception) {
-                mValue = (String) value;
+            public void fail(Bundle value, Exception exception) {
+                mValue = (Bundle) value;
             }
         });
 
-        task.fail("aaa", null);
-        assertEquals("aaa", mValue);
+	    Bundle bundle = new Bundle();
+        task.fail(bundle, null);
+        assertEquals(bundle, mValue);
     }
 }

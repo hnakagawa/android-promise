@@ -1,5 +1,7 @@
 package com.anprosit.android.promise.internal;
 
+import android.os.Bundle;
+
 import com.anprosit.android.promise.Task;
 
 /**
@@ -12,9 +14,9 @@ public interface PromiseContext {
 
     public void done(Object result);
 
-    public void fail(Object result, Exception exception);
+    public void fail(Bundle result, Exception exception);
 
-    public Task<?, ?, ?> getNextTask();
+    public Task<?, ?> getNextTask();
 
     public enum State {
         READY,

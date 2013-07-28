@@ -1,5 +1,7 @@
 package com.anprosit.android.promise.test;
 
+import android.os.Bundle;
+
 import com.anprosit.android.promise.Task;
 import com.anprosit.android.promise.internal.PromiseContext;
 
@@ -23,12 +25,12 @@ public class MockPromiseContext implements PromiseContext {
     }
 
     @Override
-    public void fail(Object result, Exception exception) {
+    public void fail(Bundle result, Exception exception) {
 
     }
 
     @Override
-    public Task<?, ?, ?> getNextTask() {
+    public Task<?, ?> getNextTask() {
         return null;
     }
 }

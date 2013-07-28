@@ -1,10 +1,12 @@
 package com.anprosit.android.promise;
 
+import android.os.Bundle;
+
 /**
  * Created by Hirofumi Nakagawa on 13/07/15.
  */
-public interface ResultCallback<T, E> {
+public interface ResultCallback<T> {
     public void onCompleted(T result);
 
-    public void onFailed(E result, Exception exception);
+    public void onFailed(Bundle result, Exception exception);
 }

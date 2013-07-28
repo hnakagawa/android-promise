@@ -1,16 +1,18 @@
 package com.anprosit.android.promise;
 
+import android.os.Bundle;
+
 import com.anprosit.android.promise.internal.PromiseContext;
 
 /**
  * Created by Hirofumi Nakagawa on 13/07/12.
  */
-public abstract class Task<T, V, E> {
+public abstract class Task<T, V> {
     private PromiseContext mContext;
 
     public abstract void run(T value);
 
-    public void onFailed(E value, Exception exception) {
+    public void onFailed(Bundle bundle, Exception exception) {
     }
 
     public void execute(T value, PromiseContext context) {
@@ -31,7 +33,7 @@ public abstract class Task<T, V, E> {
             if (context == null)
                 throw new IllegalStateException(); //TODO message
 
-            Task<V, ?, ?> next = (Task<V, ?, ?>) context.getNextTask();
+            Task<V, ?> next = (Task<V, ?>) context.getNextTask();
             if (next != null)
                 next.execute(value, context);
             else
@@ -41,11 +43,11 @@ public abstract class Task<T, V, E> {
         }
     }
 
-    protected void fail(E value) {
+    protected void fail(Bundle value) {
         fail(value, null);
     }
 
-    protected synchronized void fail(E value, Exception exception) {
+    protected synchronized void fail(Bundle value, Exception exception) {
         try {
             callOnFailed(value, exception);
         } finally {
@@ -53,7 +55,7 @@ public abstract class Task<T, V, E> {
         }
     }
 
-    private void callOnFailed(E value, Exception exception) {
+    private void callOnFailed(Bundle value, Exception exception) {
         try {
             onFailed(value, exception);
         } finally {

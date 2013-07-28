@@ -1,5 +1,6 @@
 package com.anprosit.android.promise.internal;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -7,7 +8,7 @@ import android.util.Log;
 /**
  * Created by Hirofumi Nakagawa on 13/07/14.
  */
-public class HandlerThreadTask<T, V, E> extends DelayTask<T, V, E> {
+public class HandlerThreadTask<T, V> extends DelayTask<T, V> {
     private static final String TAG = HandlerThreadTask.class.getSimpleName();
 
     private final Handler mHandler;
@@ -44,7 +45,7 @@ public class HandlerThreadTask<T, V, E> extends DelayTask<T, V, E> {
     }
 
     @Override
-    public void onFailed(E value, Exception exp) {
+    public void onFailed(Bundle value, Exception exp) {
         Log.w(TAG, exp.getMessage() + "", exp);
     }
 }

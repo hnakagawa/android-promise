@@ -1,5 +1,6 @@
 package com.anprosit.android.promise.internal;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import java.util.concurrent.BlockingQueue;
@@ -13,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by Hirofumi Nakagawa on 13/07/14.
  */
-public class AsyncThreadTask<T, V, E> extends DelayTask<T, V, E> {
+public class AsyncThreadTask<T, V> extends DelayTask<T, V> {
     private static final String TAG = AsyncThreadTask.class.getSimpleName();
 
     private static final int CORE_POOL_SIZE = 3;
@@ -71,7 +72,7 @@ public class AsyncThreadTask<T, V, E> extends DelayTask<T, V, E> {
     }
 
     @Override
-    public void onFailed(E value, Exception exp) {
+    public void onFailed(Bundle value, Exception exp) {
         Log.w(TAG, exp.getMessage() + "", exp);
     }
 }

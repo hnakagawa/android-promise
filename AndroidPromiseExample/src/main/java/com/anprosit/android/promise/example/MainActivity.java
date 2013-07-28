@@ -23,8 +23,8 @@ public class MainActivity extends Activity {
 
         mHandler = new Handler();
 
-        Promise<String, String, String> promise = Promise.newInstance(this, String.class);
-        promise.thenOnMainThread(new Task<String, String, String>() {
+        Promise<String, String> promise = Promise.newInstance(this, String.class);
+        promise.thenOnMainThread(new Task<String, String>() {
             @Override
             public void run(String value) {
                 // on main thread
@@ -36,40 +36,41 @@ public class MainActivity extends Activity {
                 }, value);
             }
             // delay 1000 milli sec
-        }, 1000).thenOnAsyncThread(new Task<String, String, String>() {
+        }, 1000).thenOnAsyncThread(new Task<String, String>() {
             @Override
             public void run(String value) {
                 // on async thread
                 next(dummyBlockingCall(value));
             }
-        }).then(createPromise()).then(new Task<String, String, String>() {
+        }).then(createPromise()).then(new Task<String, String>() {
             @Override
             public void run(String value) {
                 // on previous task thread
                 throw new RuntimeException("dummy exception");
             }
 
-            public void onFailed(String value, Exception exception) {
+	        @Override
+            public void onFailed(Bundle value, Exception exception) {
                 // on previous task thread
                 // recovery
                 next("bbb");
             }
-        }).execute("aaa", new ResultCallback<String, String>() {
+        }).execute("aaa", new ResultCallback<String>() {
             @Override
             public void onCompleted(String result) {
                 Toast.makeText(MainActivity.this, "completed with " + result, Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailed(String result, Exception exception) {
+            public void onFailed(Bundle result, Exception exception) {
                 Toast.makeText(MainActivity.this, "failed with " + result, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private Promise<String, String, String> createPromise() {
-        Promise<String, String, String> promise = Promise.newInstance(this, String.class);
-        promise.thenOnMainThread(new Task<String, String, String>() {
+    private Promise<String, String> createPromise() {
+        Promise<String, String> promise = Promise.newInstance(this, String.class);
+        promise.thenOnMainThread(new Task<String, String>() {
             @Override
             public void run(String value) {
                 Toast.makeText(MainActivity.this, "modularize task with " + value, Toast.LENGTH_SHORT).show();
