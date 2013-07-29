@@ -8,8 +8,6 @@ import com.anprosit.android.promise.Task;
  * Created by Hirofumi Nakagawa on 13/07/14.
  */
 public interface PromiseContext {
-	public State getState();
-
 	public void cancel();
 
 	public void done(Object result);
@@ -18,14 +16,13 @@ public interface PromiseContext {
 
 	public void yield(int code, Bundle value);
 
-	public Task<?, ?> getNextTask();
+	public Task<?, ?> getTask(int index);
+
+	public State getState();
 
 	public enum State {
-		READY,
-		DOING,
-		DONE,
+		ALIVE,
 		CANCELLED,
-		FAILED,
 		DESTROYED,
 	}
 }

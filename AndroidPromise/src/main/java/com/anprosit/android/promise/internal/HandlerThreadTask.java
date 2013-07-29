@@ -23,14 +23,13 @@ public class HandlerThreadTask<T, V> extends DelayTask<T, V> {
 	}
 
 	@Override
-	public void execute(final T value, final PromiseContext context) {
+	public void execute(final T value, final PromiseContext context, final int index) {
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					if (context.getState() != PromiseContext.State.DOING)
-						return;
-					setContext(context);
+					mContext = context;
+					mIndex = index;
 					HandlerThreadTask.this.run(value);
 				} catch (Exception exp) {
 					fail(null, exp);

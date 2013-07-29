@@ -8,7 +8,9 @@ import com.anprosit.android.promise.internal.PromiseContext;
  * Created by Hirofumi Nakagawa on 13/07/12.
  */
 public abstract class Task<T, V> {
-	private PromiseContext mContext;
+	protected volatile PromiseContext mContext;
+
+	protected volatile int mIndex;
 
 	public abstract void run(T value);
 
@@ -18,11 +20,13 @@ public abstract class Task<T, V> {
 	public void onYield(int code, Bundle value) {
 	}
 
-	public void execute(T value, PromiseContext context) {
-		if (context.getState() != PromiseContext.State.DOING)
+	public void execute(T value, PromiseContext context, int index) {
+		mContext = context;
+		mIndex = index;
+
+		if (PromiseContext.State.ALIVE != mContext.getState())
 			return;
 
-		setContext(context);
 		try {
 			run(value);
 		} catch (Exception exp) {
@@ -30,61 +34,35 @@ public abstract class Task<T, V> {
 		}
 	}
 
-	protected synchronized final void next(V value) {
-		try {
-			PromiseContext context = getContext();
-			if (context == null)
-				throw new IllegalStateException(); //TODO message
+	protected final void next(V value) {
+		if (PromiseContext.State.ALIVE != mContext.getState())
+			return;
 
-			Task<V, ?> next = (Task<V, ?>) context.getNextTask();
-			if (next != null)
-				next.execute(value, context);
-			else
-				context.done(value);
-		} finally {
-			setContext(null);
-		}
+		Task<V, ?> next = (Task<V, ?>) mContext.getTask(mIndex);
+		if (next != null)
+			next.execute(value, mContext, mIndex + 1);
+		else
+			mContext.done(value);
 	}
 
 	protected void fail(Bundle value) {
 		fail(value, null);
 	}
 
-	protected synchronized void fail(Bundle value, Exception exception) {
-		try {
-			callOnFailed(value, exception);
-		} finally {
-			setContext(null);
-		}
-	}
-
-	private void callOnFailed(Bundle value, Exception exception) {
+	protected void fail(Bundle value, Exception exception) {
 		try {
 			onFailed(value, exception);
 		} finally {
-			PromiseContext context = getContext();
-			if (context != null)
-				context.fail(value, exception);
-			//else{} recovered by onFailed handler
+			mContext.fail(value, exception);
 		}
 	}
 
-	protected synchronized void yield(int code, Bundle value) {
+	protected void yield(int code, Bundle value) {
 		try {
 			onYield(code, value);
-			PromiseContext context = getContext();
-			if (context != null)
-				context.yield(code, value);
+			mContext.yield(code, value);
 		} catch (Exception exp) {
-			callOnFailed(null, exp);
+			fail(null, exp);
 		}
-	}
-
-	protected synchronized PromiseContext getContext() {
-		return mContext;
-	}
-
-	protected synchronized void setContext(PromiseContext context) {
-		mContext = context;
 	}
 }

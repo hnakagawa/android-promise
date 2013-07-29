@@ -34,17 +34,11 @@ public abstract class Promise<I, O> {
 
 	public abstract void execute(I value, ResultCallback<O> resultCallback);
 
-	public abstract boolean isCompleted();
-
-	public abstract boolean isFailed();
-
 	public abstract void cancel();
 
 	public abstract void destroy();
 
 	public abstract boolean isCancelled();
-
-	public abstract void await();
 
 	public static synchronized <T> Promise<T, T> newInstance(Context context, Class<T> in) {
 		return newInstance(context, in, new Handler(Looper.getMainLooper()));

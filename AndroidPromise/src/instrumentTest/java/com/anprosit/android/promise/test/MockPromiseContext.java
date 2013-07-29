@@ -35,7 +35,7 @@ public class MockPromiseContext implements PromiseContext {
 	}
 
 	@Override
-	public Task<?, ?> getNextTask() {
+	public Task<?, ?> getTask(int index) {
 		return null;
 	}
 }

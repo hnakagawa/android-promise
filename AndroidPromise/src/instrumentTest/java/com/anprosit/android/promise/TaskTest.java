@@ -16,15 +16,12 @@ public class TaskTest extends AndroidTestCase {
 
 	private Object mValue;
 
-	private int mSeq;
-
 	@Override
 	public void setUp() throws Exception {
 		super.setUp();
 		mIsDone = false;
 		mIsFailed = false;
 		mValue = null;
-		mSeq = 0;
 	}
 
 	public void testExecute() {
@@ -43,14 +40,14 @@ public class TaskTest extends AndroidTestCase {
 		task.execute("aaa", new MockPromiseContext() {
 			@Override
 			public State getState() {
-				return State.DOING;
+				return State.ALIVE;
 			}
 
 			@Override
 			public void done(Object value) {
 				mIsDone = true;
 			}
-		});
+		}, 0);
 		assertTrue(mIsDone);
 	}
 
@@ -72,14 +69,14 @@ public class TaskTest extends AndroidTestCase {
 		task.execute("aaa", new MockPromiseContext() {
 			@Override
 			public State getState() {
-				return State.DOING;
+				return State.ALIVE;
 			}
 
 			@Override
 			public void done(Object value) {
 				mIsDone = true;
 			}
-		});
+		}, 0);
 
 		assertTrue(mIsFailed);
 		assertEquals(bundle, mValue);
@@ -102,14 +99,14 @@ public class TaskTest extends AndroidTestCase {
 		task.execute("aaa", new MockPromiseContext() {
 			@Override
 			public State getState() {
-				return State.DOING;
+				return State.ALIVE;
 			}
 
 			@Override
 			public void fail(Bundle value, Exception exp) {
 				mIsFailed = true;
 			}
-		});
+		}, 0);
 
 		assertTrue(mIsFailed);
 		assertEquals(exp, mValue);
@@ -137,7 +134,7 @@ public class TaskTest extends AndroidTestCase {
 			public void done(Object value) {
 				mIsDone = true;
 			}
-		});
+		}, 0);
 		assertFalse(mIsDone);
 	}
 
@@ -152,17 +149,16 @@ public class TaskTest extends AndroidTestCase {
 			}
 		};
 
-		task.setContext(new MockPromiseContext() {
+		task.mContext = new MockPromiseContext() {
 			@Override
 			public State getState() {
-				return State.DOING;
+				return State.ALIVE;
 			}
 
 			@Override
-			public Task<?, ?> getNextTask() {
-				if (mSeq != 0)
+			public Task<?, ?> getTask(int index) {
+				if (index != 0)
 					return null;
-				mSeq++;
 				return new Task<Object, Object>() {
 					@Override
 					public void run(Object value) {
@@ -174,7 +170,8 @@ public class TaskTest extends AndroidTestCase {
 					}
 				};
 			}
-		});
+		};
+		task.mIndex = 0;
 
 		task.next("aaa");
 		assertEquals("aaa", mValue);
@@ -191,17 +188,17 @@ public class TaskTest extends AndroidTestCase {
 			}
 		};
 
-		task.setContext(new MockPromiseContext() {
+		task.mContext = new MockPromiseContext() {
 			@Override
 			public State getState() {
-				return State.DOING;
+				return State.ALIVE;
 			}
 
 			@Override
 			public void fail(Bundle value, Exception exception) {
 				mValue = value;
 			}
-		});
+		};
 
 		Bundle bundle = new Bundle();
 		task.fail(bundle, null);
@@ -215,17 +212,17 @@ public class TaskTest extends AndroidTestCase {
 			}
 		};
 
-		task.setContext(new MockPromiseContext() {
+		task.mContext = new MockPromiseContext() {
 			@Override
 			public State getState() {
-				return State.DOING;
+				return State.ALIVE;
 			}
 
 			@Override
 			public void yield(int code, Bundle value) {
 				mValue = value;
 			}
-		});
+		};
 
 		Bundle bundle = new Bundle();
 		task.yield(1, bundle);

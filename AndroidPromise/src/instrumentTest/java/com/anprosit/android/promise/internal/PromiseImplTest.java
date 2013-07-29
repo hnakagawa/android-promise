@@ -74,30 +74,19 @@ public class PromiseImplTest extends AndroidTestCase {
 		assertEquals(PromiseContext.State.DESTROYED, mPromise.getState());
 	}
 
-	public void testIsCompleted() {
-		assertFalse(mPromise.isCompleted());
-		mPromise.mState = PromiseContext.State.DOING;
-		mPromise.done(null);
-		assertTrue(mPromise.isCompleted());
-	}
-
 	public void testCancel() {
-		assertEquals(PromiseContext.State.READY, mPromise.getState());
-		mPromise.mState = PromiseContext.State.DOING;
+		assertEquals(PromiseContext.State.ALIVE, mPromise.getState());
 		mPromise.cancel();
 		assertEquals(PromiseContext.State.CANCELLED, mPromise.getState());
 	}
 
 	public void testFail() {
-		assertEquals(PromiseContext.State.READY, mPromise.getState());
-		mPromise.mState = PromiseContext.State.DOING;
+		assertEquals(PromiseContext.State.ALIVE, mPromise.getState());
 		mPromise.fail(null, new Exception());
-		assertEquals(PromiseContext.State.FAILED, mPromise.getState());
 	}
 
 	public void testYield() {
-		assertEquals(PromiseContext.State.READY, mPromise.getState());
-		mPromise.mState = PromiseContext.State.DOING;
+		assertEquals(PromiseContext.State.ALIVE, mPromise.getState());
 		mPromise.yield(1, new Bundle());
 	}
 
@@ -112,8 +101,8 @@ public class PromiseImplTest extends AndroidTestCase {
 			}
 		});
 
-		assertNotNull(mPromise.getNextTask());
-		assertNull(mPromise.getNextTask());
+		assertNotNull(mPromise.getTask(0));
+		assertNull(mPromise.getTask(1));
 	}
 
 	public void testExecute() {
@@ -128,14 +117,10 @@ public class PromiseImplTest extends AndroidTestCase {
 			}
 		});
 
-		assertEquals(PromiseContext.State.READY, mPromise.getState());
 		mPromise.execute("aaa", null);
-		assertEquals(PromiseContext.State.DONE, mPromise.getState());
 	}
 
 	public void testExecuteWithEmptyTask() {
-		assertEquals(PromiseContext.State.READY, mPromise.getState());
 		mPromise.execute("aaa", null);
-		assertEquals(PromiseContext.State.DONE, mPromise.getState());
 	}
 }

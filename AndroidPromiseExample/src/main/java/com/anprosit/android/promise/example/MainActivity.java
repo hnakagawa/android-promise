@@ -3,7 +3,10 @@ package com.anprosit.android.promise.example;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.anprosit.android.promise.Promise;
@@ -16,29 +19,31 @@ public class MainActivity extends Activity {
 
 	private Handler mHandler;
 
+	private Button mButton;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		mButton = (Button) findViewById(R.id.button);
 
 		mHandler = new Handler();
 
 		Promise<String, String> promise = Promise.newInstance(this, String.class);
-		promise.thenOnMainThread(new Task<String, String>() {
+		promise.then(new Task<String, String>() {
 			@Override
-			public void run(String value) {
-				// on main thread
-				dummyCall(new DummyCallback<String>() {
+			public void run(final String value) {
+				mButton.setOnClickListener(new View.OnClickListener() {
 					@Override
-					public void onResult(String result) {
-						yield(1, null);
-						next(result);
+					public void onClick(View view) {
+						next(value);
 					}
-				}, value);
+				});
 			}
 		}).thenOnAsyncThread(new Task<String, String>() {
 			@Override
 			public void run(String value) {
+				yield(1, null);
 				// on async thread
 				next(dummyBlockingCall(value));
 				// delay 1000 milli sec
@@ -59,6 +64,7 @@ public class MainActivity extends Activity {
 		}).execute("aaa", new ResultCallback<String>() {
 			@Override
 			public void onCompleted(String result) {
+				Log.w(TAG, "onCompleted");
 				Toast.makeText(MainActivity.this, "completed with " + result, Toast.LENGTH_SHORT).show();
 			}
 
@@ -99,15 +105,6 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	private void dummyCall(final DummyCallback<String> callback, final String value) {
-		mHandler.post(new Runnable() {
-			@Override
-			public void run() {
-				callback.onResult(value);
-			}
-		});
-	}
-
 	private String dummyBlockingCall(String value) {
 		ThreadUtils.checkNotMainThread();
 		try {
@@ -115,9 +112,5 @@ public class MainActivity extends Activity {
 		} catch (InterruptedException exp) {
 		}
 		return value;
-	}
-
-	public interface DummyCallback<T> {
-		public void onResult(T result);
 	}
 }

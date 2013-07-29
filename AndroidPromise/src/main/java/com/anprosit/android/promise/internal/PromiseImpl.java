@@ -6,12 +6,10 @@ import android.os.Handler;
 import com.anprosit.android.promise.Promise;
 import com.anprosit.android.promise.ResultCallback;
 import com.anprosit.android.promise.Task;
-import com.anprosit.android.promise.internal.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by Hirofumi Nakagawa on 13/07/12.
@@ -21,31 +19,23 @@ public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
 
 	private final Handler mHandler;
 
-	private int mIndex;
-
 	private ResultCallback<?> mResultCallback;
 
-	private CountDownLatch mLatch = new CountDownLatch(1);
-
-	protected State mState = State.READY;
+	protected volatile State mState = State.ALIVE;
 
 	public PromiseImpl(Handler handler) {
 		mHandler = handler;
 	}
 
 	@Override
-	public <NO> Promise<I, NO> then(Task<O, NO> task) {
-		synchronized (this) {
-			addTask(task);
-		}
+	public synchronized <NO> Promise<I, NO> then(Task<O, NO> task) {
+		addTask(task);
 		return (Promise<I, NO>) this;
 	}
 
 	@Override
-	public <NO> Promise<I, NO> then(Promise<O, NO> promise) {
-		synchronized (this) {
-			addTasks(promise.anatomy());
-		}
+	public synchronized <NO> Promise<I, NO> then(Promise<O, NO> promise) {
+		addTasks(promise.anatomy());
 		return (Promise<I, NO>) this;
 	}
 
@@ -55,11 +45,9 @@ public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
 	}
 
 	@Override
-	public <NO> Promise<I, NO> thenOnMainThread(Task<O, NO> task, long delay) {
-		synchronized (this) {
-			addTask(new HandlerThreadTask(delay));
-			addTask(task);
-		}
+	public synchronized <NO> Promise<I, NO> thenOnMainThread(Task<O, NO> task, long delay) {
+		addTask(new HandlerThreadTask(delay));
+		addTask(task);
 		return (Promise<I, NO>) this;
 	}
 
@@ -69,47 +57,38 @@ public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
 	}
 
 	@Override
-	public <NO> Promise<I, NO> thenOnAsyncThread(Task<O, NO> task, long delay) {
-		synchronized (this) {
-			addTask(new AsyncThreadTask(delay));
-			addTask(task);
-		}
+	public synchronized <NO> Promise<I, NO> thenOnAsyncThread(Task<O, NO> task, long delay) {
+		addTask(new AsyncThreadTask(delay));
+		addTask(task);
 		return (Promise<I, NO>) this;
 	}
 
 	@Override
 	public synchronized void execute(I value, ResultCallback<O> resultCallback) {
-		if (getState() != State.READY)
-			throw new IllegalStateException("Promise#execute method must be called in READY state");
-
 		mResultCallback = resultCallback;
 
-		Task<Object, ?> next = (Task<Object, ?>) getNextTask();
-
-		mState = State.DOING;
+		Task<Object, ?> next = (Task<Object, ?>) getTask(0);
 
 		if (next == null) {
 			done(value);
 			return;
 		}
 
-		next.execute(value, this);
+		next.execute(value, this, 1);
 	}
 
 	@Override
 	public synchronized Collection<Task<?, ?>> anatomy() {
-		if (mState != State.READY)
-			throw new IllegalStateException("Promise#anatomy method must be called in READY state");
+		if (getState() != State.ALIVE)
+			throw new IllegalStateException("Promise#anatomy method must be called in DOING state");
 		destroy();
 		return mTasks;
 	}
 
 	@Override
 	public synchronized void done(final Object result) {
-		if (mState != State.DOING)
+		if (getState() != State.ALIVE)
 			return;
-
-		mState = State.DONE;
 
 		final ResultCallback<Object> callback = (ResultCallback<Object>) mResultCallback;
 		if (callback == null)
@@ -118,60 +97,35 @@ public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
 		mHandler.post(new Runnable() {
 			@Override
 			public void run() {
-				try {
-					if (getState() == State.DONE)
-						callback.onCompleted(result);
-				} finally {
-					mLatch.countDown();
-				}
+				if (getState() != State.ALIVE)
+					return;
+
+				callback.onCompleted(result);
 			}
 		});
-	}
-
-	@Override
-	public synchronized boolean isCompleted() {
-		return mState == State.DONE;
-	}
-
-	@Override
-	public synchronized boolean isFailed() {
-		return mState == State.FAILED;
 	}
 
 	@Override
 	public synchronized void cancel() {
-		if (mState != State.DOING && mState != State.READY)
+		if (getState() != State.ALIVE)
 			return;
-		mState = State.CANCELLED;
-		mLatch.countDown();
+		setState(State.CANCELLED);
 	}
 
 	@Override
 	public synchronized boolean isCancelled() {
-		return mState == State.CANCELLED;
+		return getState() == State.CANCELLED;
 	}
 
 	@Override
 	public synchronized void destroy() {
-		mState = State.DESTROYED;
-		mLatch.countDown();
-	}
-
-	@Override
-	public void await() {
-		ThreadUtils.checkNotMainThread();
-		try {
-			mLatch.await();
-		} catch (InterruptedException exp) {
-		}
+		setState(State.DESTROYED);
 	}
 
 	@Override
 	public synchronized void fail(final Bundle result, final Exception exception) {
-		if (mState != State.DOING)
+		if (getState() != State.ALIVE)
 			return;
-
-		mState = State.FAILED;
 
 		final ResultCallback<?> callback = mResultCallback;
 		if (callback == null)
@@ -180,19 +134,17 @@ public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
 		mHandler.post(new Runnable() {
 			@Override
 			public void run() {
-				try {
-					if (getState() == State.FAILED)
-						callback.onFailed(result, exception);
-				} finally {
-					mLatch.countDown();
-				}
+				if (getState() != State.ALIVE)
+					return;
+
+				callback.onFailed(result, exception);
 			}
 		});
 	}
 
 	@Override
-	public void yield(final int code, final Bundle value) {
-		if (mState != State.DOING)
+	public synchronized void yield(final int code, final Bundle value) {
+		if (getState() != State.ALIVE)
 			return;
 
 		final ResultCallback<?> callback = mResultCallback;
@@ -202,22 +154,26 @@ public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
 		mHandler.post(new Runnable() {
 			@Override
 			public void run() {
-				if (getState() == State.DOING)
+				if (getState() == State.ALIVE)
 					callback.onYield(code, value);
 			}
 		});
 	}
 
 	@Override
-	public synchronized State getState() {
+	public State getState() {
 		return mState;
 	}
 
+	protected void setState(State state) {
+		mState = state;
+	}
+
 	@Override
-	public synchronized Task<?, ?> getNextTask() {
-		if (mIndex >= mTasks.size())
+	public synchronized Task<?, ?> getTask(int index) {
+		if (index >= mTasks.size())
 			return null;
-		return mTasks.get(mIndex++);
+		return mTasks.get(index);
 	}
 
 	private void addTask(Task<?, ?> task) {
