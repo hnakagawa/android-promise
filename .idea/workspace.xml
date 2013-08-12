@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidConfiguredLogFilters">
+    <filters>
+      <filter>
+        <option name="logLevel" value="verbose" />
+        <option name="logMessagePattern" value="" />
+        <option name="logTagPattern" value="" />
+        <option name="name" value="Unnamed-0" />
+        <option name="packageNamePattern" value="com.anprosit.android.promise.example" />
+        <option name="pid" value="" />
+      </filter>
+    </filters>
+  </component>
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
       <GlobalState />
@@ -12,8 +24,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f95c05f0-4300-4316-bbee-199b8a63abfe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidPromise/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidPromise/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/utils/ThreadUtils.java" afterPath="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/utils/ThreadUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidPromise/build.gradle" afterPath="$PROJECT_DIR$/AndroidPromise/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -83,17 +94,124 @@
     <favorites_list name="AndroidPromise" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="build.gradle" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AndroidPromise/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="538" selection-end="538" vertical-scroll-proportion="0.45541403" vertical-offset="308" max-vertical-offset="1438">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="AsyncThreadTask.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/AsyncThreadTask.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="69" column="15" selection-start="1913" selection-end="1913" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="1422">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ThreadUtils.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/utils/ThreadUtils.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="16" column="0" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1124">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/AndroidManifest.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ResultCallback.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/ResultCallback.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="7" column="17" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="288">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CalledFromWrongThreadRuntimeException.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/exception/CalledFromWrongThreadRuntimeException.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="5" column="13" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="486">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DelayTask.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/DelayTask.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="7" column="22" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="360">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Task.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Task.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="41" column="25" selection-start="888" selection-end="888" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1260">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/build.gradle">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="build.gradle" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/build.gradle">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="40" column="32" selection-start="713" selection-end="713" vertical-scroll-proportion="1.1214954" vertical-offset="0" max-vertical-offset="1452">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HandlerThreadTask.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/HandlerThreadTask.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="42" column="13" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0" vertical-offset="738" max-vertical-offset="936">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="PromiseContext.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseContext.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="18" column="22" selection-start="384" selection-end="384" vertical-scroll-proportion="0.44859812" vertical-offset="0" max-vertical-offset="1092">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PromiseImpl.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="50" column="37" selection-start="1301" selection-end="1301" vertical-scroll-proportion="0.0" vertical-offset="882" max-vertical-offset="3384">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -175,28 +293,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/FailedCallback.java" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/exception/CalledFromWrongThreadRuntimeException.java" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/utils/ThreadUtils.java" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/HandlerThreadCallback.java" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/utils/ThreadUtils.java" />
-        <option value="$PROJECT_DIR$/AndroidPromiseExample/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/TaskTest.java" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Task.java" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/CompletedCallback.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/DelayTaskTest.java" />
+        <option value="$PROJECT_DIR$/AndroidPromiseExample/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/ResultCallback.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/test/MockPromiseContext.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/HandlerThreadTask.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseContext.java" />
         <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java" />
-        <option value="$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/TaskTest.java" />
         <option value="$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java" />
         <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java" />
-        <option value="$PROJECT_DIR$/AndroidPromise/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/AndroidPromiseExample/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Task.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/AsyncThreadTask.java" />
+        <option value="$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/utils/ThreadUtils.java" />
         <option value="$PROJECT_DIR$/AndroidPromise/build.gradle" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="8" />
-    <option name="y" value="18" />
+    <option name="x" value="2" />
+    <option name="y" value="6" />
     <option name="width" value="1920" />
     <option name="height" value="1055" />
   </component>
@@ -290,7 +408,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -319,85 +436,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromiseExample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="AndroidPromise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromiseProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromiseProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromiseProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidPromise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AndroidPromise" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DriveModeProject" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="androidpromise" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="4.2.2-arm" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Android4.1" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
@@ -407,7 +471,7 @@
     <property name="options.lastSelected" value="preferences.keymap" />
     <property name="project.structure.side.proportion" value="0.28041714" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="0149B2EB0600E00C" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="014E058C0E01E01A" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="options.searchVisible" value="true" />
@@ -482,6 +546,26 @@
       <patterns />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="AndroidPromiseExample" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true">
+      <module name="AndroidPromiseExample" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <RunnerSettings RunnerId="AndroidDebugRunner" />
+      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
     </configuration>
     <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
@@ -616,18 +700,20 @@
       <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
     </configuration>
-    <list size="5">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Android Application.AndroidPromise" />
       <item index="1" class="java.lang.String" itemvalue="Android Application.AndroidPromiseExample" />
       <item index="2" class="java.lang.String" itemvalue="Android Tests.AndroidPromise" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.All in AndroidPromise" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.All in AndroidPromiseExample" />
+      <item index="5" class="java.lang.String" itemvalue="Android Tests.AndroidPromiseExample" />
     </list>
     <recent_temporary>
-      <list size="3">
+      <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Android Tests.AndroidPromise" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.All in AndroidPromiseExample" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.All in AndroidPromise" />
+        <item index="1" class="java.lang.String" itemvalue="Android Tests.AndroidPromiseExample" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.All in AndroidPromiseExample" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.All in AndroidPromise" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
@@ -675,36 +761,83 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="8" y="18" width="1920" height="1055" extended-state="0" />
+    <frame x="2" y="6" width="1920" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27403316" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25856355" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27403316" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855567" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.7259669" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27292818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281768" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.7270718" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919957" sideWeight="0.738699" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19764957" sideWeight="0.7259669" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26072606" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19764957" sideWeight="0.7414365" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25856355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.738699" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.6714443" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977018" sideWeight="0.6714443" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39955604" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25856355" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.7270718" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19764957" sideWeight="0.7414365" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.738699" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25856355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.6714443" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27292818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281768" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919957" sideWeight="0.738699" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39955604" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -767,100 +900,111 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/FailedCallback.java">
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/DelayTaskTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210" />
+        <state line="12" column="21" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1025" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/AsyncThreadTask.java">
+    <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="18" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.13843648" vertical-offset="995" max-vertical-offset="1982" />
+        <state line="9" column="0" selection-start="576" selection-end="576" vertical-scroll-proportion="-5.785714" vertical-offset="0" max-vertical-offset="1195" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/DelayTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="2" selection-start="2" selection-end="2" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/HandlerThreadTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="18" selection-start="1018" selection-end="1018" vertical-scroll-proportion="0.14992025" vertical-offset="500" max-vertical-offset="1509" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="405" selection-end="405" vertical-scroll-proportion="0.40829346" vertical-offset="86" max-vertical-offset="1095" />
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/src/main/java/com/anprosit/android/promise/example/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="2124">
-          <folding />
-        </state>
+        <state line="83" column="36" selection-start="2408" selection-end="2408" vertical-scroll-proportion="0.0" vertical-offset="1314" max-vertical-offset="2420" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Promise.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="52" selection-start="1502" selection-end="1502" vertical-scroll-proportion="0.0" vertical-offset="846" max-vertical-offset="1314">
+        <state line="14" column="0" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="1718">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/instrumentTest/java/com/anprosit/android/promise/internal/PromiseImplTest.java">
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/exception/CalledFromWrongThreadRuntimeException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="985" selection-end="985" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="3007">
+        <state line="5" column="13" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1011">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/AsyncThreadTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613">
+        <state line="69" column="15" selection-start="1913" selection-end="1913" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1934">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.ja.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="22" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="4214" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1023">
+        <state line="50" column="37" selection-start="1301" selection-end="1301" vertical-scroll-proportion="0.0" vertical-offset="496" max-vertical-offset="3788">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/HandlerThreadTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.3745928" vertical-offset="1458" max-vertical-offset="18956">
+        <state line="42" column="13" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0" vertical-offset="514" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidPromise/AndroidPromise.iml">
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/DelayTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1941">
+        <state line="7" column="22" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="885">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/ResultCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="863">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="25" selection-start="888" selection-end="888" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/PromiseContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="22" selection-start="384" selection-end="384" vertical-scroll-proportion="0.44859812" vertical-offset="0" max-vertical-offset="1092">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidPromiseExample/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/java/com/anprosit/android/promise/internal/utils/ThreadUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1124">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromise/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="36" selection-start="188" selection-end="188" vertical-scroll-proportion="0.086124405" vertical-offset="0" max-vertical-offset="825">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="777">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidPromise/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="538" selection-end="538" vertical-scroll-proportion="0.45541403" vertical-offset="308" max-vertical-offset="1438">
+        <state line="40" column="32" selection-start="713" selection-end="713" vertical-scroll-proportion="1.1214954" vertical-offset="0" max-vertical-offset="1452">
           <folding />
         </state>
       </provider>
@@ -928,11 +1072,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>AndroidPromiseProject</last-edited>
+          <last-edited>AndroidPromise</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.28041714" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -940,7 +1085,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>AndroidPromise</last-edited>
+          <last-edited>support-v4-13.0.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
