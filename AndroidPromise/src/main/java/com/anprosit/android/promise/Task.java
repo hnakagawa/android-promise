@@ -8,7 +8,7 @@ import com.anprosit.android.promise.internal.PromiseContext;
  * Created by Hirofumi Nakagawa on 13/07/12.
  */
 public abstract class Task<T, V> {
-	protected volatile PromiseContext mContext;
+	protected volatile PromiseContext mPromiseContext;
 
 	protected volatile int mIndex;
 
@@ -20,11 +20,11 @@ public abstract class Task<T, V> {
 	public void onYield(int code, Bundle value) {
 	}
 
-	public void execute(T value, PromiseContext context, int index) {
-		mContext = context;
+	public void execute(T value, PromiseContext promiseContext, int index) {
+		mPromiseContext = promiseContext;
 		mIndex = index;
 
-		if (PromiseContext.State.ALIVE != mContext.getState())
+		if (PromiseContext.State.ALIVE != mPromiseContext.getState())
 			return;
 
 		try {
@@ -35,14 +35,14 @@ public abstract class Task<T, V> {
 	}
 
 	protected final void next(V value) {
-		if (PromiseContext.State.ALIVE != mContext.getState())
+		if (PromiseContext.State.ALIVE != mPromiseContext.getState())
 			return;
 
-		Task<V, ?> next = (Task<V, ?>) mContext.getTask(mIndex);
+		Task<V, ?> next = (Task<V, ?>) mPromiseContext.getTask(mIndex);
 		if (next != null)
-			next.execute(value, mContext, mIndex + 1);
+			next.execute(value, mPromiseContext, mIndex + 1);
 		else
-			mContext.done(value);
+			mPromiseContext.done(value);
 	}
 
 	protected void fail(Bundle value) {
@@ -53,14 +53,14 @@ public abstract class Task<T, V> {
 		try {
 			onFailed(value, exception);
 		} finally {
-			mContext.fail(value, exception);
+			mPromiseContext.fail(value, exception);
 		}
 	}
 
 	protected void yield(int code, Bundle value) {
 		try {
 			onYield(code, value);
-			mContext.yield(code, value);
+			mPromiseContext.yield(code, value);
 		} catch (Exception exp) {
 			fail(null, exp);
 		}

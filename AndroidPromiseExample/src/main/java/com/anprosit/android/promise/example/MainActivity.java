@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onFailed(Bundle result, Exception exception) {
-				Toast.makeText(MainActivity.this, "failed with " + result, Toast.LENGTH_SHORT).show();
+				Toast.makeText(MainActivity.this, "failed with " + exception.getMessage(), Toast.LENGTH_SHORT).show();
 			}
 
 			@Override

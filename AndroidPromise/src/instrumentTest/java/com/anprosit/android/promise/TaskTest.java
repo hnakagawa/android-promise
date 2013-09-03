@@ -149,7 +149,7 @@ public class TaskTest extends AndroidTestCase {
 			}
 		};
 
-		task.mContext = new MockPromiseContext() {
+		task.mPromiseContext = new MockPromiseContext() {
 			@Override
 			public State getState() {
 				return State.ALIVE;
@@ -188,7 +188,7 @@ public class TaskTest extends AndroidTestCase {
 			}
 		};
 
-		task.mContext = new MockPromiseContext() {
+		task.mPromiseContext = new MockPromiseContext() {
 			@Override
 			public State getState() {
 				return State.ALIVE;
@@ -212,7 +212,7 @@ public class TaskTest extends AndroidTestCase {
 			}
 		};
 
-		task.mContext = new MockPromiseContext() {
+		task.mPromiseContext = new MockPromiseContext() {
 			@Override
 			public State getState() {
 				return State.ALIVE;

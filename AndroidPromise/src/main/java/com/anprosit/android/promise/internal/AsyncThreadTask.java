@@ -49,12 +49,12 @@ public class AsyncThreadTask<T, V> extends DelayTask<T, V> {
 	}
 
 	@Override
-	public void execute(final T value, final PromiseContext context, final int index) {
+	public void execute(final T value, final PromiseContext promiseContext, final int index) {
 		mExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					mContext = context;
+					mPromiseContext = promiseContext;
 					mIndex = index;
 					Thread.sleep(getDelay());
 					AsyncThreadTask.this.run(value);
