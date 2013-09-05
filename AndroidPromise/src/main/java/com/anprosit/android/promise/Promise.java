@@ -8,15 +8,17 @@ import com.anprosit.android.promise.internal.PromiseImpl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.WeakHashMap;
 
 /**
  * Created by Hirofumi Nakagawa on 13/07/12.
  */
 public abstract class Promise<I, O> {
-	private static Map<Context, List<Promise<?, ?>>> mPromises = new WeakHashMap<Context, List<Promise<?, ?>>>();
+	private static Map<Context, Set<Promise<?, ?>>> mPromises = new WeakHashMap<Context, Set<Promise<?, ?>>>();
 
 	public abstract <NO> Promise<I, NO> then(Task<O, NO> task);
 
@@ -32,6 +34,10 @@ public abstract class Promise<I, O> {
 
 	public abstract Collection<Task<?, ?>> anatomy();
 
+    public abstract PromiseExecutor<I, O> setResultCallback(ResultCallback<O> resultCallback);
+
+    public abstract void execute(I value);
+
 	public abstract void execute(I value, ResultCallback<O> resultCallback);
 
 	public abstract void cancel();
@@ -45,21 +51,32 @@ public abstract class Promise<I, O> {
 	}
 
 	public static synchronized <T> Promise<T, T> newInstance(Context context, Class<T> in, Handler handler) {
-		List<Promise<?, ?>> list = mPromises.get(context);
-		if (list == null)
-			list = new ArrayList<Promise<?, ?>>();
+		Set<Promise<?, ?>> set = mPromises.get(context);
+		if (set == null)
+			set = new HashSet<Promise<?, ?>>();
 
 		Promise instance = new PromiseImpl(handler);
-		list.add(instance);
+		set.add(instance);
 		return instance;
 	}
 
+    public static synchronized void destroy(Context context, Promise<?, ?> promise) {
+        try {
+            Set<Promise<?, ?>> set = mPromises.remove(context);
+            if (set == null)
+                return;
+            set.remove(promise);
+        } finally {
+            promise.destroy();
+        }
+    }
+
 	public static synchronized void destroy(Context context) {
-		List<Promise<?, ?>> list = mPromises.remove(context);
-		if (list == null)
+		Set<Promise<?, ?>> set = mPromises.remove(context);
+		if (set == null)
 			return;
 
-		for (Promise<?, ?> promise : list)
+		for (Promise<?, ?> promise : set)
 			promise.destroy();
 	}
 }

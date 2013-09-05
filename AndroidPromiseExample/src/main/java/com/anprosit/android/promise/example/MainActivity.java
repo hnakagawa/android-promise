@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 				// recovery
 				next("bbb");
 			}
-		}).execute("aaa", new ResultCallback<String>() {
+		}).setResultCallback(new ResultCallback<String>() {
 			@Override
 			public void onCompleted(String result) {
 				Log.w(TAG, "onCompleted");
@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
 			public void onYield(int code, Bundle value) {
 				Toast.makeText(MainActivity.this, "yielded with " + code, Toast.LENGTH_SHORT).show();
 			}
-		});
+        }).execute("aaa");
 	}
 
 	private Promise<String, String> createPromise() {

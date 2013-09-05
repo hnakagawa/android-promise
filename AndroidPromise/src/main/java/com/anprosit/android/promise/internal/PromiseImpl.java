@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.anprosit.android.promise.Promise;
+import com.anprosit.android.promise.PromiseExecutor;
 import com.anprosit.android.promise.ResultCallback;
 import com.anprosit.android.promise.Task;
 
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by Hirofumi Nakagawa on 13/07/12.
  */
-public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
+public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext, PromiseExecutor<I, O> {
 	private List<Task<?, ?>> mTasks = new ArrayList<Task<?, ?>>();
 
 	private final Handler mHandler;
@@ -63,9 +64,21 @@ public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
 		return (Promise<I, NO>) this;
 	}
 
-	@Override
+    @Override
+    public synchronized PromiseExecutor<I, O> setResultCallback(ResultCallback<O> resultCallback) {
+        mResultCallback = resultCallback;
+        return this;
+    }
+
+    @Override
+    public void execute(I value) {
+        execute(value, null);
+    }
+
+    @Override
 	public synchronized void execute(I value, ResultCallback<O> resultCallback) {
-		mResultCallback = resultCallback;
+        if (mResultCallback == null)
+            mResultCallback = resultCallback;
 
 		Task<Object, ?> next = (Task<Object, ?>) getTask(0);
 
@@ -85,7 +98,7 @@ public class PromiseImpl<I, O> extends Promise<I, O> implements PromiseContext {
 		return mTasks;
 	}
 
-	@Override
+    @Override
 	public synchronized void done(final Object result) {
 		if (getState() != State.ALIVE)
 			return;
