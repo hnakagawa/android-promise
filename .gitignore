@@ -24,4 +24,7 @@ local.properties
 
 # Android studio
 .idea/workspace.xml
-
+.idea
+*.iml
+*.ipr
+*.iws
