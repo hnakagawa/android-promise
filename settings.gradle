@@ -1,1 +1,1 @@
-include ':AndroidPromise', ':AndroidPromiseExample'
+include ':example', ':library'
