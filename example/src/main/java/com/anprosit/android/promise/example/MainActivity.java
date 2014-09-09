@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 				Toast.makeText(MainActivity.this, "Failed some task", Toast.LENGTH_SHORT).show();
 				Log.e(TAG, exp.getMessage() + "", exp);
 			}
-		}).build().execute(1);
+		}).create().execute(1);
 	}
 
 	@Override

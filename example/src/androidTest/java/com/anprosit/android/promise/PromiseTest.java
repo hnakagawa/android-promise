@@ -32,21 +32,21 @@ public class PromiseTest {
 	}
 
 	@Test
-	public void with_ShouldReturnBuilder() {
-		Promise.Builder<String, String> builder = Promise.with(this, String.class);
-		assertNotNull(builder);
+	public void with_ShouldReturnCreator() {
+		Promise.Creator<String, String> creator = Promise.with(this, String.class);
+		assertNotNull(creator);
 	}
 
 	@Test
-	public void build_shouldReturnPromise() {
-		Promise<String, String> promise = Promise.with(this, String.class).build();
+	public void create_shouldReturnPromise() {
+		Promise<String, String> promise = Promise.with(this, String.class).create();
 		assertNotNull(promise);
 		assertEquals(0, promise.getAllTasks().size());
 	}
 
 	@Test
 	public void getState_shouldReturnState() {
-		Promise<Integer, Integer> promise = Promise.with(this, Integer.class).build();
+		Promise<Integer, Integer> promise = Promise.with(this, Integer.class).create();
 		assertEquals(Promise.State.INIT, promise.getState());
 		promise.execute(0);
 		assertEquals(Promise.State.RUNNING, promise.getState());
@@ -65,7 +65,7 @@ public class PromiseTest {
 			@Override
 			public void onFailure(Bundle result, Exception exception) {
 			}
-		}).build().execute(0);
+		}).create().execute(0);
 		Robolectric.runUiThreadTasks();
 		assertTrue(mCalled);
 	}
@@ -86,16 +86,16 @@ public class PromiseTest {
 			public void onFailure(Bundle result, Exception exception) {
 				mCalled = true;
 			}
-		}).build().execute(0);
+		}).create().execute(0);
 		Robolectric.runUiThreadTasks();
 		assertTrue(mCalled);
 	}
 
 	@Test
 	public void execute_shouldExecuteAllTasks() {
-		Promise.Builder<Integer, Integer> builder = Promise.with(this, Integer.class);
+		Promise.Creator<Integer, Integer> creator = Promise.with(this, Integer.class);
 		for (int i = 0; i < 10; i++) {
-			builder.then(new Task<Integer, Object>() {
+			creator.then(new Task<Integer, Object>() {
 				@Override
 				public void run(Integer value, NextTask<Object> next) {
 					next.run(value + 1);
@@ -103,7 +103,7 @@ public class PromiseTest {
 			});
 		}
 
-		builder.setCallback(new Callback<Integer>() {
+		creator.setCallback(new Callback<Integer>() {
 			@Override
 			public void onSuccess(Integer result) {
 				assertEquals(10, (int)result);
@@ -113,7 +113,7 @@ public class PromiseTest {
 			@Override
 			public void onFailure(Bundle result, Exception exception) {
 			}
-		}).build().execute(0);
+		}).create().execute(0);
 		assertTrue(mCalled);
 	}
 }

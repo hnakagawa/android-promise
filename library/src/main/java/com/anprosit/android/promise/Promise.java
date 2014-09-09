@@ -137,8 +137,8 @@ public class Promise<I, O> {
 		DESTROYED,
 	}
 
-	public static synchronized <T> Builder<T, T> with(Object lifecycle, Class<T> in) {
-		return new Builder<T, T>(lifecycle, new Handler(Looper.getMainLooper()), sThreadPoolExecutor);
+	public static synchronized <T> Creator<T, T> with(Object lifecycle, Class<T> in) {
+		return new Creator<T, T>(lifecycle, new Handler(Looper.getMainLooper()), sThreadPoolExecutor);
 	}
 
 	public static synchronized void destroyWith(Object lifecycle, Promise<?, ?> promise) {
@@ -161,7 +161,7 @@ public class Promise<I, O> {
 			promise.destroy();
 	}
 
-	public static class Builder<I, O> implements RestrictedBuilder<I, O> {
+	public static class Creator<I, O> implements RestrictedCreator<I, O> {
 		private final List<Task<?, ?>> mTasks = new ArrayList<Task<?, ?>>();
 
 		private final List<TaskExecutor<?, ?>> mTaskExecutors = new ArrayList<TaskExecutor<?, ?>>();
@@ -176,54 +176,54 @@ public class Promise<I, O> {
 
 		private Callback<O> mCallback;
 
-		public Builder(Object lifecycle, Handler handler, Executor executor) {
+		public Creator(Object lifecycle, Handler handler, Executor executor) {
 			mLifecycle = lifecycle;
 			mHandler = handler;
 			mExecutor = executor;
 		}
 
-		public <NO> Builder<I, NO> then(Task<O, NO> task) {
+		public <NO> Creator<I, NO> then(Task<O, NO> task) {
 			mTasks.add(task);
 			mTaskExecutors.add(new TaskExecutor<O, NO>(task, mTaskExecutors.size()));
-			return (Builder<I, NO>) this;
+			return (Creator<I, NO>) this;
 		}
 
-		public <NO> Builder<I, NO> then(Promise<O, NO> promise) {
+		public <NO> Creator<I, NO> then(Promise<O, NO> promise) {
 			mTasks.addAll(promise.getAllTasks());
-			return (Builder<I, NO>) this;
+			return (Creator<I, NO>) this;
 		}
 
-		public <NO> Builder<I, NO> thenOnMainThread(Task<O, NO> task) {
+		public <NO> Creator<I, NO> thenOnMainThread(Task<O, NO> task) {
 			return thenOnMainThread(task, 0);
 		}
 
-		public <NO> Builder<I, NO> thenOnMainThread(Task<O, NO> task, long delay) {
+		public <NO> Creator<I, NO> thenOnMainThread(Task<O, NO> task, long delay) {
 			mTasks.add(task);
 			mTaskExecutors.add(new HandlerThreadTaskExecutor(task, mTaskExecutors.size(), delay, mHandler));
-			return (Builder<I, NO>) this;
+			return (Creator<I, NO>) this;
 		}
 
-		public <NO> Builder<I, NO> thenOnAsyncThread(Task<O, NO> task) {
+		public <NO> Creator<I, NO> thenOnAsyncThread(Task<O, NO> task) {
 			return thenOnAsyncThread(task, 0);
 		}
 
-		public <NO> Builder<I, NO> thenOnAsyncThread(Task<O, NO> task, long delay) {
+		public <NO> Creator<I, NO> thenOnAsyncThread(Task<O, NO> task, long delay) {
 			mTasks.add(task);
 			mTaskExecutors.add(new AsyncThreadTaskExecutor(task, mTaskExecutors.size(), delay, mExecutor));
-			return (Builder<I, NO>) this;
+			return (Creator<I, NO>) this;
 		}
 
-		public Builder<I, O> setOnYieldListener(OnYieldListener onYieldListener) {
+		public Creator<I, O> setOnYieldListener(OnYieldListener onYieldListener) {
 			mOnYieldListener = onYieldListener;
 			return this;
 		}
 
-		public RestrictedBuilder<I, O> setCallback(Callback<O> callback) {
+		public RestrictedCreator<I, O> setCallback(Callback<O> callback) {
 			mCallback = callback;
 			return this;
 		}
 
-		public Promise<I, O> build() {
+		public Promise<I, O> create() {
 			mTaskExecutors.add(new CallbackTaskExecutor<O, O>(null, mTaskExecutors.size(), mHandler, mCallback));
 
 			Promise<I, O> instance = new Promise<I, O>(mHandler, Collections.unmodifiableList(mTasks), Collections.unmodifiableList(mTaskExecutors), mOnYieldListener, mCallback);
@@ -242,7 +242,7 @@ public class Promise<I, O> {
 		}
 	}
 
-	public interface RestrictedBuilder<I, O> {
-		public Promise<I, O> build();
+	public interface RestrictedCreator<I, O> {
+		public Promise<I, O> create();
 	}
 }
