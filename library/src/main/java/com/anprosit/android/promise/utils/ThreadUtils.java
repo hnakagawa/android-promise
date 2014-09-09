@@ -1,14 +1,18 @@
-package com.anprosit.android.promise.internal.utils;
+package com.anprosit.android.promise.utils;
 
 import android.os.Looper;
 
-import com.anprosit.android.promise.internal.exception.CalledFromWrongThreadRuntimeException;
+import com.anprosit.android.promise.exception.CalledFromWrongThreadRuntimeException;
 
 /**
  * Created by Hirofumi Nakagawa on 13/07/16.
  */
 public final class ThreadUtils {
 	private ThreadUtils() {
+	}
+
+	public static boolean isMainThread() {
+		return isMainThread(Thread.currentThread());
 	}
 
 	public static boolean isMainThread(Thread thread) {

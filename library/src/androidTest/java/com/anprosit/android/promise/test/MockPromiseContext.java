@@ -3,7 +3,7 @@ package com.anprosit.android.promise.test;
 import android.os.Bundle;
 
 import com.anprosit.android.promise.Task;
-import com.anprosit.android.promise.internal.PromiseContext;
+import com.anprosit.android.promise.PromiseContext;
 
 /**
  * Created by Hirofumi Nakagawa on 13/07/15.

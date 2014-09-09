@@ -29,5 +29,5 @@ gen-external-apklibs
 tmp
 
 .gradle
-
+local.properties
 .DS_Store

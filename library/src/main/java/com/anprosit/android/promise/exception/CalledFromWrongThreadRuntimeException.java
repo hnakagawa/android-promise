@@ -1,4 +1,4 @@
-package com.anprosit.android.promise.internal.exception;
+package com.anprosit.android.promise.exception;
 
 /**
  * Created by Hirofumi Nakagawa on 13/07/16.
