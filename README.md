@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/hnakagawa/android-promise.png)](https://travis-ci.org/hnakagawa/android-promise)
 What is Android Promise
 ======================
 
