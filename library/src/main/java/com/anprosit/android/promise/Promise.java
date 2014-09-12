@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Looper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -42,7 +45,7 @@ public class Promise<I, O> {
 		}
 	};
 
-	private static final Executor sThreadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE,
+	private static final ExecutorService sThreadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE,
 			KEEP_ALIVE, TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);
 
 	private static Map<Object, Set<Promise<?, ?>>> sPromises = new WeakHashMap<Object, Set<Promise<?, ?>>>();
@@ -57,6 +60,8 @@ public class Promise<I, O> {
 
 	private final Callback<O> mCallback;
 
+	private final CallbackTaskExecutor<O> mCallbackTaskExecutor;
+
 	private volatile State mState = State.INIT;
 
 	private Promise(Handler handler, List<Task<?, ?>> tasks, List<TaskExecutor<?, ?>> taskExecutors, OnYieldListener onYieldListener, Callback<O> callback) {
@@ -65,6 +70,7 @@ public class Promise<I, O> {
 		mTaskExecutors = taskExecutors;
 		mOnYieldListener = onYieldListener;
 		mCallback = callback;
+		mCallbackTaskExecutor = new CallbackTaskExecutor<O>(this);
 	}
 
 	public void execute(I value) {
@@ -73,6 +79,12 @@ public class Promise<I, O> {
 			throw new IllegalStateException("Promise#execute method must be called in INIT or RUNNING states");
 
 		setState(State.RUNNING);
+
+		if (mTaskExecutors.isEmpty()) {
+			mCallbackTaskExecutor.run((O)value);
+			return;
+		}
+
 		TaskExecutor<I, ?> taskExecutor = (TaskExecutor<I, ?>) mTaskExecutors.get(0);
 		taskExecutor.run(value);
 	}
@@ -99,10 +111,27 @@ public class Promise<I, O> {
 		return mTasks.get(index);
 	}
 
+	List<TaskExecutor<?, ?>> getAllTaskExecutors() {
+		return mTaskExecutors;
+	}
+
 	TaskExecutor<?, ?> getTaskExecutor(int index) {
-		if (index >= mTaskExecutors.size())
-			return null;
+		if (index == mTaskExecutors.size())
+			return mCallbackTaskExecutor;
 		return mTaskExecutors.get(index);
+	}
+
+	void done(final O result) {
+		if (getState() != State.RUNNING || mCallback == null)
+			return;
+
+		mHandler.post(new Runnable() {
+			@Override
+			public void run() {
+				if (getState() == State.RUNNING)
+					mCallback.onSuccess(result);
+			}
+		});
 	}
 
 	void fail(final Bundle result, final Exception exception) {
@@ -170,26 +199,21 @@ public class Promise<I, O> {
 
 		private final Handler mHandler;
 
-		private final Executor mExecutor;
+		private final ExecutorService mService;
 
 		private OnYieldListener mOnYieldListener;
 
 		private Callback<O> mCallback;
 
-		public Creator(Object lifecycle, Handler handler, Executor executor) {
+		public Creator(Object lifecycle, Handler handler, ExecutorService service) {
 			mLifecycle = lifecycle;
 			mHandler = handler;
-			mExecutor = executor;
+			mService = service;
 		}
 
 		public <NO> Creator<I, NO> then(Task<O, NO> task) {
 			mTasks.add(task);
 			mTaskExecutors.add(new TaskExecutor<O, NO>(task, mTaskExecutors.size()));
-			return (Creator<I, NO>) this;
-		}
-
-		public <NO> Creator<I, NO> then(Promise<O, NO> promise) {
-			mTasks.addAll(promise.getAllTasks());
 			return (Creator<I, NO>) this;
 		}
 
@@ -207,9 +231,16 @@ public class Promise<I, O> {
 			return thenOnAsyncThread(task, 0);
 		}
 
+		public <NO> Creator<I, List<NO>> thenOnParallelThread(List<Task<O, NO>> tasks) {
+			TaskSet<O, NO> set = new TaskSet<O, NO>(tasks);
+			mTasks.add(set);
+			mTaskExecutors.add(new ParallelTaskExecutor<O, NO>(set, mTaskExecutors.size(), mService));
+			return (Creator<I, List<NO>>) this;
+		}
+
 		public <NO> Creator<I, NO> thenOnAsyncThread(Task<O, NO> task, long delay) {
 			mTasks.add(task);
-			mTaskExecutors.add(new AsyncThreadTaskExecutor(task, mTaskExecutors.size(), delay, mExecutor));
+			mTaskExecutors.add(new AsyncThreadTaskExecutor(task, mTaskExecutors.size(), delay, mService));
 			return (Creator<I, NO>) this;
 		}
 
@@ -224,8 +255,6 @@ public class Promise<I, O> {
 		}
 
 		public Promise<I, O> create() {
-			mTaskExecutors.add(new CallbackTaskExecutor<O, O>(null, mTaskExecutors.size(), mHandler, mCallback));
-
 			Promise<I, O> instance = new Promise<I, O>(mHandler, Collections.unmodifiableList(mTasks), Collections.unmodifiableList(mTaskExecutors), mOnYieldListener, mCallback);
 			for (TaskExecutor<?, ?> taskExecutor : mTaskExecutors)
 				taskExecutor.setPromise(instance);

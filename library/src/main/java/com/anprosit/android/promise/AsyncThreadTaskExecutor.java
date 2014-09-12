@@ -1,6 +1,7 @@
 package com.anprosit.android.promise;
 
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 /**
  * Created by Hirofumi Nakagawa on 13/07/14.
@@ -8,16 +9,16 @@ import java.util.concurrent.Executor;
 class AsyncThreadTaskExecutor<I, O> extends DelayTaskExecutor<I, O> {
 	private static final String TAG = AsyncThreadTaskExecutor.class.getSimpleName();
 
-	private final Executor mExecutor;
+	private final ExecutorService mService;
 
-	AsyncThreadTaskExecutor(Task<I, O> task, int index, long delay, Executor executor) {
+	AsyncThreadTaskExecutor(Task<I, O> task, int index, long delay, ExecutorService service) {
 		super(task, index, delay);
-		mExecutor = executor;
+		mService = service;
 	}
 
 	@Override
 	public void run(final I value) {
-		mExecutor.execute(new Runnable() {
+		mService.execute(new Runnable() {
 			@Override
 			public void run() {
 				if (mPromise.getState() != Promise.State.RUNNING)
